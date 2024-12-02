@@ -1,0 +1,62 @@
+namespace NumberGuess
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+
+            Random random = new Random();
+            int numberRandom = random.Next(1, 101);
+
+            int attempts = 0;
+
+            Console.WriteLine("Hello! Guess the number up to 100!");
+
+            while (true)
+            {
+                int numberTyped = inputNumber();
+
+                attempts++;
+
+                if (numberTyped == numberRandom)
+                {
+                    Console.WriteLine("You guessed the number!");
+                    Console.WriteLine("Number of attempts:" + attempts);
+                    Console.WriteLine("Thanks for playing!");
+                    Console.WriteLine("Press any key to exit");
+                    Console.ReadKey();
+                    break;
+                }
+                else if (numberTyped < numberRandom)
+                {
+                    Console.WriteLine("Try higher number");
+                }
+                else
+                {
+                    Console.WriteLine("Try lower number");
+                }
+            }
+
+            Console.WriteLine("Thanks for playing!");
+            
+            int inputNumber()
+            {
+                while (true)
+                {
+                    Console.Write("Enter the number: ");
+                    string inputNumber = Console.ReadLine();
+                    Console.WriteLine();
+
+                    if (int.TryParse(inputNumber, out int guessNumber) && guessNumber >= 1 && guessNumber <= 100)
+                    {
+                        return guessNumber;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Please enter a number within the range 1 - 100");
+                    }
+                }
+            }
+        }
+    }
+}
