@@ -1,0 +1,86 @@
+using System;
+
+namespace Calculator
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Hi! The caluclator is ready to use");
+
+            while (true)
+            {
+                try
+                {
+                    Console.Write("Enter number N1: ");
+                    if (!double.TryParse(Console.ReadLine(), out double ricxvi1))
+                    {
+                        Console.WriteLine("Invalid Number. Please enter a valid one.");
+                        continue;
+                    }
+
+                    Console.Write("Enter number N2: ");
+                    if (!double.TryParse(Console.ReadLine(), out double ricxvi2))
+                    {
+                        Console.WriteLine("Invalid Number. Please enter a valid one");
+                        continue;
+                    }
+
+                    Console.WriteLine("Choose what to do with the numbers (+, -, *, /): ");
+                    string moqmedeba = Console.ReadLine();
+
+                    double shedegi;
+                    if (moqmedeba == "+")
+                    {
+                        shedegi = ricxvi1 + ricxvi2;
+                    }
+                    else if (moqmedeba == "-")
+                    {
+                        shedegi = ricxvi1 - ricxvi2;
+                    }
+                    else if (moqmedeba == "*")
+                    {
+                        shedegi = ricxvi1 * ricxvi2;
+                    }
+                    else if (moqmedeba == "/")
+                    {
+                        if (ricxvi2 == 0)
+                        {
+                            Console.WriteLine("You can't devide a number by zero!");
+                            continue;
+                        }
+                        shedegi = ricxvi1 / ricxvi2;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid operation. Please choose one from these (+, -, *, /).");
+                        continue;
+                    }
+
+                    Console.WriteLine("Calculation result is: " + shedegi);
+                }
+
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error: {ex.Message}");
+                }
+
+                Console.Write("Perform another calculation? (Type yes or no): ");
+
+                string anotherCalc = Console.ReadLine().ToLower();
+                if (anotherCalc != "yes")
+                {
+                    break;
+                }
+            }
+
+            Console.WriteLine("You're done with the calculations!");
+            Console.WriteLine("Press any key to exit");
+            Console.ReadKey();
+        }
+    }
+
+
+}
+
+
